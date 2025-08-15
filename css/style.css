@@ -12,19 +12,20 @@
 }
 
 body{
-    max-width: 1440px;
-    margin: 0 auto;
     background-color: #F6F8FF;
     font-family: 'Space Mono';
 }
+
+.container{
+    max-width: 750px;
+    margin: 130px auto 200px;
+}
 header{
-    margin: 130px 0px 40px 0px;
+    margin-bottom:40px;
 }
 nav{
     display: flex;
     justify-content: space-between;
-    max-width: 730px;
-    margin: 0 auto;
 }
 .light {
     display: flex;
@@ -52,14 +53,12 @@ nav{
 }
 .search {
     display: flex;
-    justify-content: center;
     align-items: center;
-    max-width: 730px;
     height: 70px;
-    margin: 0 auto;
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19);
+    margin-bottom: 40px;
 }
 .search:focus{
     border: 4px solid #0079FF;
@@ -70,8 +69,7 @@ nav{
     margin-left: 24px;
 }
 .search_input{
-    width: 587px;
-    height: 25px;
+    width: 100%;
     padding-left:20px;
     border: none;
     outline: none;
@@ -106,21 +104,15 @@ nav{
     outline: 3px solid #0079FF;
     border-radius: 10px;
 }
-main{
-    max-width: 730px;
-    margin: 0 auto;
-}
 .content {
     display: flex;
-    height: 395px;
-    margin-top: 40px;
-    margin-bottom: 200px;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19);
 }
 .avatar{
-    padding: 48px 32px 0px 48px;
+    grid-column: 1/2;
+    /* grid-area: a; */
 }
 .avatar_img{
     border-radius: 50%;
@@ -128,14 +120,18 @@ main{
 .info {
     display: flex;
     flex-direction: column;
-    row-gap: 24px;
-    width: 480px;
-    height: 300px;
-    padding-top: 48px;
+    padding: 48px 53px 48px 48px;
 }
 .info_header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 150px 1fr 1fr 1fr;
+    grid-template-rows: 58.5px 58.5px;
+    /* grid-template-areas: "a b c"
+                        "a d c"; */
+}
+.info_title{
+    grid-column: 2/4;
+    /* grid-area: b; */
 }
 .info_name {
     font-size: 26px;
@@ -149,18 +145,27 @@ main{
     color: #0079FF;
 }
 .info_registration, .info_bio {
+    grid-column: 4/5;
+    /* grid-area: c; */
     font-size: 15px;
     line-height: 150%;
     color: #4B6A9B;
+    margin-left: auto;
+}
+.info_bio{
+    grid-column: 2/5;
+    /* grid-area: d; */
+    margin-left: 0;
 }
 .info_page {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width:480px;
-    height: 85px;
     background-color: #F6F8FF;
     border-radius: 10px;
+    width: 77%;
+    margin-left: auto;
+    margin-bottom: 24px;
 }
 .info_list {
     padding-block:15px;
@@ -182,6 +187,8 @@ main{
     justify-content: space-between;
     row-gap:16px;
     list-style-type: none;
+    width: 77%;
+    margin-left: auto;
 }
 a{
     text-decoration: none;
@@ -206,4 +213,78 @@ a:hover{
 }
 .id_git{
     padding-right: 100px;
+}
+
+@media(max-width: 768px){
+    .container{
+        max-width: 705px;
+        margin: 32px 32px 290px;
+    }
+}
+
+@media (max-width: 425px){
+    .container{
+        max-width: 375px;
+        margin: 32px 16px 97px;
+    }
+    .header{
+        margin-bottom:32px;
+    }
+    .light {
+        column-gap: 12px;
+    }
+    .search {
+        margin-bottom: 32px;
+    }
+    .loop{
+        margin-left: 12px;
+    }
+    .search_input{
+        width: 57%;
+        font-size: 13px;
+        padding-left: 8px;
+    }
+    .search_input::placeholder{
+        font-size: 13px;
+    }
+    .search_btn{
+        width: 100px;
+    }
+    .avatar{
+        grid-column:1/2;
+    }
+    .avatar_img{
+        width:70px;
+        height: 70px;
+    }
+    .info{
+        padding: 32px 24px 32px 24px;
+    }
+    .info_header{
+        grid-template-columns: 90px 1fr;
+        grid-template-rows: 57px 55px 47px;
+       /* grid-template-areas: "a b b b b"
+                            "a c c c c"
+                            "d d d d d"; */
+    }
+    .info_title{
+        grid-column: 2/3;
+    }
+    .info_registration{
+        grid-column: 2/3;
+        grid-row: 2/4;
+        margin-left: 0;
+    }
+    .info_bio{
+        grid-column: 1/3;
+        grid-row: 3/4;
+    }
+    .info_bio, .info_page, .info_links{
+        margin-left: 0;
+        width: 100%;
+    }
+    .info_page{
+        display: block;
+        padding-inline: 20px;
+    }
 }
